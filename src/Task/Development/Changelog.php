@@ -63,6 +63,11 @@ class Changelog extends BaseTask implements BuilderAwareInterface
     protected $version = "";
 
     /**
+     * @var boolean
+     */
+    protected $datestamp = false;
+
+    /**
      * @param string $filename
      *
      * @return $this
@@ -103,6 +108,17 @@ class Changelog extends BaseTask implements BuilderAwareInterface
     public function version($version)
     {
         $this->version = $version;
+        return $this;
+    }
+
+    /**
+     * @param boolean $datestamp
+     *
+     * @return $this
+     */
+    public function datestamp($datestamp)
+    {
+        $this->datestamp = $datestamp;
         return $this;
     }
 
@@ -156,7 +172,10 @@ class Changelog extends BaseTask implements BuilderAwareInterface
             "\n",
             array_map(
                 function ($i) {
+                    if ($this->datestamp){
                         return "* $i *" . date('Y-m-d') . "*";
+                    }
+                    return "* $i";
                 },
                 $this->log
             )
