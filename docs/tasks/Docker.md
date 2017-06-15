@@ -22,12 +22,12 @@ Class Build
 
 * `tag($tag)`   * `param string` $tag
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 * `arg($arg)`  Pass argument to executable. Its value will be automatically escaped.
 * `args($args)`  Pass methods parameters as arguments to executable. Argument values
 * `rawArg($arg)`  Pass the provided string in its raw (as provided) form as an argument to executable.
-* `option($option, $value = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
-* `optionList($option, $value = null)`  Pass multiple options to executable. Value can be a string or array.
+* `option($option, $value = null, $separator = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
+* `options(array $options, $separator = null)`  Pass multiple options to executable. The associative array contains
+* `optionList($option, $value = null, $separator = null)`  Pass an option with multiple values to executable. Value can be a string or array.
 
 ## Commit
 
@@ -52,12 +52,12 @@ $task->dockerCommit($result)
 
 * `name($name)`   * `param` $name
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 * `arg($arg)`  Pass argument to executable. Its value will be automatically escaped.
 * `args($args)`  Pass methods parameters as arguments to executable. Argument values
 * `rawArg($arg)`  Pass the provided string in its raw (as provided) form as an argument to executable.
-* `option($option, $value = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
-* `optionList($option, $value = null)`  Pass multiple options to executable. Value can be a string or array.
+* `option($option, $value = null, $separator = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
+* `options(array $options, $separator = null)`  Pass multiple options to executable. The associative array contains
+* `optionList($option, $value = null, $separator = null)`  Pass an option with multiple values to executable. Value can be a string or array.
 
 ## Exec
 
@@ -86,15 +86,14 @@ $this->taskDockerExec($test)
 
 
 * `detached()`   * `return` $this
-* `interactive()`   * `return` $this
 * `exec($command)`   * `param string|\Robo\Contract\CommandInterface` $command
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 * `arg($arg)`  Pass argument to executable. Its value will be automatically escaped.
 * `args($args)`  Pass methods parameters as arguments to executable. Argument values
 * `rawArg($arg)`  Pass the provided string in its raw (as provided) form as an argument to executable.
-* `option($option, $value = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
-* `optionList($option, $value = null)`  Pass multiple options to executable. Value can be a string or array.
+* `option($option, $value = null, $separator = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
+* `options(array $options, $separator = null)`  Pass multiple options to executable. The associative array contains
+* `optionList($option, $value = null, $separator = null)`  Pass an option with multiple values to executable. Value can be a string or array.
 
 ## Pull
 
@@ -111,12 +110,12 @@ $this->taskDockerPull('wordpress')
 
 
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 * `arg($arg)`  Pass argument to executable. Its value will be automatically escaped.
 * `args($args)`  Pass methods parameters as arguments to executable. Argument values
 * `rawArg($arg)`  Pass the provided string in its raw (as provided) form as an argument to executable.
-* `option($option, $value = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
-* `optionList($option, $value = null)`  Pass multiple options to executable. Value can be a string or array.
+* `option($option, $value = null, $separator = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
+* `options(array $options, $separator = null)`  Pass multiple options to executable. The associative array contains
+* `optionList($option, $value = null, $separator = null)`  Pass an option with multiple values to executable. Value can be a string or array.
 
 ## Remove
 
@@ -132,12 +131,12 @@ $this->taskDockerRemove($container)
 
 
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 * `arg($arg)`  Pass argument to executable. Its value will be automatically escaped.
 * `args($args)`  Pass methods parameters as arguments to executable. Argument values
 * `rawArg($arg)`  Pass the provided string in its raw (as provided) form as an argument to executable.
-* `option($option, $value = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
-* `optionList($option, $value = null)`  Pass multiple options to executable. Value can be a string or array.
+* `option($option, $value = null, $separator = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
+* `options(array $options, $separator = null)`  Pass multiple options to executable. The associative array contains
+* `optionList($option, $value = null, $separator = null)`  Pass an option with multiple values to executable. Value can be a string or array.
 
 
 ## Run
@@ -186,10 +185,8 @@ $this->taskDockerRun('wordpress')
 
 
 * `detached()`   * `return` $this
-* `interactive()`   * `return` $this
 * `exec($run)`   * `param string|\Robo\Contract\CommandInterface` $run
 * `volume($from, $to = null)`   * `param string` $from
-* `env($variable, $value = null)`   * `param string` $variable
 * `publish($port = null, $portTo = null)`   * `param null|int` $port
 * `containerWorkdir($dir)`   * `param string` $dir
 * `user($user)`   * `param string` $user
@@ -200,12 +197,12 @@ $this->taskDockerRun('wordpress')
 * `getTmpDir()`  @return string
 * `getUniqId()`  @return string
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 * `arg($arg)`  Pass argument to executable. Its value will be automatically escaped.
 * `args($args)`  Pass methods parameters as arguments to executable. Argument values
 * `rawArg($arg)`  Pass the provided string in its raw (as provided) form as an argument to executable.
-* `option($option, $value = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
-* `optionList($option, $value = null)`  Pass multiple options to executable. Value can be a string or array.
+* `option($option, $value = null, $separator = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
+* `options(array $options, $separator = null)`  Pass multiple options to executable. The associative array contains
+* `optionList($option, $value = null, $separator = null)`  Pass an option with multiple values to executable. Value can be a string or array.
 
 ## Start
 
@@ -220,12 +217,12 @@ $this->taskDockerStart($cidOrResult)
 ```
 
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 * `arg($arg)`  Pass argument to executable. Its value will be automatically escaped.
 * `args($args)`  Pass methods parameters as arguments to executable. Argument values
 * `rawArg($arg)`  Pass the provided string in its raw (as provided) form as an argument to executable.
-* `option($option, $value = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
-* `optionList($option, $value = null)`  Pass multiple options to executable. Value can be a string or array.
+* `option($option, $value = null, $separator = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
+* `options(array $options, $separator = null)`  Pass multiple options to executable. The associative array contains
+* `optionList($option, $value = null, $separator = null)`  Pass an option with multiple values to executable. Value can be a string or array.
 
 ## Stop
 
@@ -240,10 +237,10 @@ $this->taskDockerStop($cidOrResult)
 ```
 
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 * `arg($arg)`  Pass argument to executable. Its value will be automatically escaped.
 * `args($args)`  Pass methods parameters as arguments to executable. Argument values
 * `rawArg($arg)`  Pass the provided string in its raw (as provided) form as an argument to executable.
-* `option($option, $value = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
-* `optionList($option, $value = null)`  Pass multiple options to executable. Value can be a string or array.
+* `option($option, $value = null, $separator = null)`  Pass option to executable. Options are prefixed with `--` , value can be provided in second parameter.
+* `options(array $options, $separator = null)`  Pass multiple options to executable. The associative array contains
+* `optionList($option, $value = null, $separator = null)`  Pass an option with multiple values to executable. Value can be a string or array.
 

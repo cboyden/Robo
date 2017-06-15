@@ -3,9 +3,7 @@ namespace Robo;
 
 use \CliGuy;
 
-use Robo\Contract\TaskInterface;
 use Robo\Collection\Temporary;
-use Robo\Result;
 
 class CollectionCest
 {
@@ -405,5 +403,28 @@ class CollectionCest
         $result = $collection->run();
         $I->assertEquals('Error', $result->getMessage());
         $I->assertEquals(1, $result->getExitCode());
+    }
+
+    public function toChainData(CliGuy $I)
+    {
+        $collection = $I->collectionBuilder();
+
+        $result = $collection
+            ->taskValueProvider()
+                ->provideMessage('1st') // Sets Result's message to '1st'
+                ->storeState('one') // Copy Result's message to $state['one']
+            ->taskValueProvider()
+                ->provideMessage('2nd')
+                ->storeState('two')
+            ->taskValueProvider()
+                ->deferTaskConfiguration('provideItem', 'one') // Same as ->proivdeItem($state['one']), but runs immediately before this task's run() method.
+                ->deferTaskConfiguration('provideMessage', 'two')
+                ->storeState('final')
+            ->run();
+
+        $state = $collection->getState();
+        $I->assertEquals('1st', $state['one']);
+        $I->assertEquals('1st', $state['item']);
+        $I->assertEquals('2nd', $state['final']);
     }
 }

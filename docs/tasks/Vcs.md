@@ -24,7 +24,7 @@ $this->taskGitStack()
 ?>
 ```
 
-* `cloneRepo($repo, $to = null)`  Executes `git clone`
+* `cloneRepo($repo, $to = null, $branch = null)`  Executes `git clone`
 * `add($pattern)`  Executes `git add` command with files to add pattern
 * `commit($message, $options = null)`  Executes `git commit` command with a message
 * `pull($origin = null, $branch = null)`  Executes `git pull` command.
@@ -37,7 +37,6 @@ $this->taskGitStack()
 * `stopOnFail($stopOnFail = null)`   * `param bool` $stopOnFail
 * `result($result)` 
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 
 ## HgStack
 
@@ -70,7 +69,6 @@ $this->hgStack
 * `stopOnFail($stopOnFail = null)`   * `param bool` $stopOnFail
 * `result($result)` 
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 
 ## SvnStack
 
@@ -104,5 +102,4 @@ $this->taskSvnStack('username', 'password')
 * `stopOnFail($stopOnFail = null)`   * `param bool` $stopOnFail
 * `result($result)` 
 * `dir($dir)`  Changes working directory of command
-* `printed($arg)`  Should command output be printed
 
